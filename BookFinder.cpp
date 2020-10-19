@@ -40,7 +40,7 @@ private:
 };
 
 int main() {
-	Book_software library();
+	Book_software library;
 }
 
 Book_software::Book_software() {
@@ -48,8 +48,6 @@ Book_software::Book_software() {
 	add_book();
 	//Stampo lista libri
 	print_books();
-
-	books[1] == books[1];
 }
 
 void Book_software::add_book() {
@@ -61,13 +59,13 @@ void Book_software::add_book() {
 	//Leggo i titoli
 	while (true) {
 		string title = "";
-		cin >> title;
+		getline(cin, title);
 		if (title == "STOP") { break; } //Controllo se l'inserimento è terminato
 		titles.push_back(title);
 	}
 
 	//Chiedo i dettagli dei libri
-	cout << "Inserisci i dettagli dei libri" << endl;
+	cout << "Inserisci i dettagli dei libri\n" << endl;
 
 	for (int i = 0; i < titles.size(); i++) {
 		//Chiedo per ogni libro:
@@ -76,20 +74,20 @@ void Book_software::add_book() {
 		//Autore
 		string author = "";
 		cout << "\nAutore: ";
-		cin >> author;
+		getline(cin, author);
 
 		//ISBN
 		string ISBN = "";
 		do
 		{
-			cout << "\nISBN: ";
-			cin >> ISBN;
+			cout << "ISBN: ";
+			getline(cin, ISBN);
 		} while (!check_ISBN(ISBN)); //Controllo se l'ISBN è valido
 		
 		//Copyright
 		string copyright = "";
-		cout << "\nCopyright date: ";
-		cin >> copyright;
+		cout << "Copyright date: ";
+		getline(cin, copyright);
 
 		//Creo un oggetto di tipo libro
 		Book book(titles[i], author, ISBN, copyright);
@@ -99,7 +97,7 @@ void Book_software::add_book() {
 }
 
 void Book_software::print_books() {
-	cout << "\nLista libri:" << endl;
+	cout << "\nLista libri: " << endl;
 	for (int i = 0; i < books.size(); i++) {
 		books[i].print_details();
 	}
